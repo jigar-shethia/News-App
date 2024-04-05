@@ -11,6 +11,6 @@ final class NewsViewModelFactory {
     
     static func createTaskViewModel() -> NewsViewModel {
         
-        return NewsViewModel(newsCBManger: NewsCDMangerImplemenatation())
+        return NewsViewModel(newsCBManger: NewsCDMangerImplemenatation() ,network: NetworkAPIClient())
     }
 }
