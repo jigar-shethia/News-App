@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170C37582BCD9B25007FA5A3 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C37572BCD9B25007FA5A3 /* CheckBoxView.swift */; };
 		17427BAD2BB9DC22004F6E9A /* NewsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17427B9D2BB9DC21004F6E9A /* NewsRow.swift */; };
 		17427BAE2BB9DC22004F6E9A /* NewsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17427B9E2BB9DC21004F6E9A /* NewsScreen.swift */; };
 		17427BAF2BB9DC22004F6E9A /* Date+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17427BA02BB9DC21004F6E9A /* Date+Extention.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170C37572BCD9B25007FA5A3 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		17427B9D2BB9DC21004F6E9A /* NewsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsRow.swift; sourceTree = "<group>"; };
 		17427B9E2BB9DC21004F6E9A /* NewsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsScreen.swift; sourceTree = "<group>"; };
 		17427BA02BB9DC21004F6E9A /* Date+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extention.swift"; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			children = (
 				17427B9D2BB9DC21004F6E9A /* NewsRow.swift */,
 				17427B9E2BB9DC21004F6E9A /* NewsScreen.swift */,
+				170C37572BCD9B25007FA5A3 /* CheckBoxView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				17F6F93D2BB7D98500F586F4 /* NewsEntity+CoreDataProperties.swift in Sources */,
 				17F6F9282BB7D59400F586F4 /* News_AppApp.swift in Sources */,
 				17427BB12BB9DC22004F6E9A /* APIEndPoint.swift in Sources */,
+				170C37582BCD9B25007FA5A3 /* CheckBoxView.swift in Sources */,
 				17427BB72BB9DC22004F6E9A /* NewsViewModelFactory.swift in Sources */,
 				17427BB52BB9DC22004F6E9A /* URLRequestConvertible.swift in Sources */,
 			);

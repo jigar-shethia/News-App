@@ -12,11 +12,12 @@ final class NewsViewModel: ObservableObject {
     @Published var news: [News] = []
     let network : NetworkService
     private let newsCBManger: NewsCBManger
+    var selectedArray:[UUID] = []
     
     init(newsCBManger: NewsCBManger, network: NetworkService) {
         self.newsCBManger = newsCBManger
         self.network = network
-
+        
     }
     
     // Fetch Data from API using NetworkLayer.
@@ -70,4 +71,11 @@ final class NewsViewModel: ObservableObject {
         return newsCBManger.delete()
     }
     
+    func deleteSelectedValue() {
+        
+        print(selectedArray)
+        if(newsCBManger.deleteItems(ids: selectedArray)){
+            get()
+        }
+    }
 }

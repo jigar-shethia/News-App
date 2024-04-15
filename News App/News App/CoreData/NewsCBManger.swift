@@ -6,23 +6,24 @@
 //
 import CoreData
 import Foundation
- 
+
 protocol NewsCBManger {
     func get() -> [News]
     func add(news:[News]) -> Bool
     func delete() -> Bool
+    func deleteItems(ids: [UUID]) -> Bool
 }
 
 class NewsCDMangerImplemenatation: NewsCBManger {
-   
     
-
+    
+    
     private let managedObjectContext: NSManagedObjectContext = PersistenceController.shared.viewContext
     
     func get() -> [News] {
         let fetchRequest = NewsEntity.fetchRequest()
         let sort = NSSortDescriptor(key: #keyPath(NewsEntity.date), ascending: false)
-            fetchRequest.sortDescriptors = [sort]
+        fetchRequest.sortDescriptors = [sort]
         do{
             let result = try managedObjectContext.fetch(fetchRequest)
             if(!result.isEmpty){
@@ -34,7 +35,7 @@ class NewsCDMangerImplemenatation: NewsCBManger {
         }
         return []
     }
-
+    
     
     func add(news: [News]) -> Bool {
         
@@ -62,19 +63,36 @@ class NewsCDMangerImplemenatation: NewsCBManger {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NewsEntity")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
-                let entities = try managedObjectContext.fetch(fetchRequest)
-                
-                for entity in entities {
-                    if let entityObject = entity as? NSManagedObject {
-                        managedObjectContext.delete(entityObject)
-                    }
+            let entities = try managedObjectContext.fetch(fetchRequest)
+            
+            for entity in entities {
+                if let entityObject = entity as? NSManagedObject {
+                    managedObjectContext.delete(entityObject)
                 }
-                
-                try managedObjectContext.save()
-                return true
-            } catch {
-                print("Error deleting entities: \(error)")
+            }
+            
+            try managedObjectContext.save()
+            return true
+        } catch {
+            print("Error deleting objects: \(error)")
+            return false
+        }
+    }
+    
+    func deleteItems(ids: [UUID]) -> Bool {
+        for id in ids {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NewsEntity")
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            let deleteRequest = NSBatchDeleteRequest( fetchRequest: fetchRequest)
+            deleteRequest.resultType = .resultTypeObjectIDs
+            
+            do{
+                try managedObjectContext.execute(deleteRequest)
+            }catch let error as NSError {
+                print(error.localizedDescription)
                 return false
             }
+        }
+        return true
     }
 }

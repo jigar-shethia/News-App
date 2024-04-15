@@ -10,7 +10,7 @@
 import SwiftUI
 
 struct NewsScreen: View {
-    @ObservedObject var viewModel: NewsViewModel = NewsViewModelFactory.createTaskViewModel()
+    @StateObject var viewModel: NewsViewModel = NewsViewModelFactory.createTaskViewModel()
     
     var body: some View {
         VStack{
@@ -24,11 +24,17 @@ struct NewsScreen: View {
                     LazyVStack {
                         
                         ForEach(viewModel.news) { news in
-                            NewsRow(newsItem: news)
+                            NewsRow(newsItem: news, viewModel: viewModel)
                             
                         }
                         
                     }
+                }
+                Button {
+                    viewModel.deleteSelectedValue()
+                }label: {
+                    Text("Delete")
+                        .foregroundColor(.red)
                 }
                 
             }
